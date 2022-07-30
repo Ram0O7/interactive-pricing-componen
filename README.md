@@ -19,8 +19,8 @@ Users should be able to:
 
 ### Links
 
-- Solution URL: [solution URL]()
-- Live Site URL: [live site URL]()
+- Solution URL: [solution URL](https://www.frontendmentor.io/solutions/interactive-pricing-component-TbjdRReCr-)
+- Live Site URL: [live site URL](https://ram0o7.github.io/interactive-pricing-componen/)
 
 
 ## Author
