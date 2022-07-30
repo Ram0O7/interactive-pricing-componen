@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
+
+  <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
+  
+  <title>Frontend Mentor | Interactive pricing component</title>
+
+  
+  <style>
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@600;800&display=swap');
+
+
+    *{
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body{
+      margin: 0;
+      padding: 0;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: hsl(230, 100%, 99%);
+      font-family: 'Manrope',sans-serif;
+      color: hsl(225, 20%, 60%);
+    }
+    .header{
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      text-align: center;
+      justify-content: center;
+      background-image: url(images/pattern-circles.svg);
+      background-repeat: no-repeat;
+      background-position: center;
+      height: 150px;
+    }
+    h1,h2{
+      color: black;
+    }
+    .header p{
+      font-size: 15px;
+      line-height: 1.5rem;
+    }
+    .body{
+      width: 380px;
+      height: 500px;
+      background-color: hsl(0, 0%, 100%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-around;
+      padding: 20px;
+      border-radius: 8px;
+      margin-top: 30px;
+    }
+    #slider {
+  -webkit-appearance: none;
+  width: 100%;
+  height: 10px;
+  border-radius: 5px;  
+  background-color:hsl(174, 77%, 80%);
+}
+
+#slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 45px;
+  height: 45px;
+  border-radius: 50%; 
+  background: hsl(174, 86%, 45%);
+  background-image: url(images/icon-slider.svg);
+  background-repeat: no-repeat;
+  background-position: center;
+  cursor:pointer;
+  box-shadow: -2px 8px 30px -2px hsl(174, 86%, 45%);
+}
+
+#slider::-moz-range-thumb {
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  background: hsl(174, 86%, 45%);
+}
+
+    .pricing{
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-between;
+      height: 220px;
+      width: 100%;
+    }
+    .billing{
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    
+    .plan-switcher{
+      padding:1.5px;
+      width: 45px;
+      height: 20px;
+      display: flex;
+      justify-content: space-between;
+      border-radius: 20px;
+      border: 1px solid hsl(225, 20%, 60%);
+background-color: hsl(223, 50%, 87%);
+    }
+    .plan-toggle{
+      background-color: hsl(174, 86%, 45%);
+    }
+    .plan-switcher span{
+      cursor: pointer;
+      width: 15px;
+      height: 15px;
+      border-radius: 50%;
+      background-color: hsl(0, 0%, 100%);
+    }
+
+    .access{
+      display: flex;
+      flex-direction: column;
+align-items: center;
+gap: 15px;
+    }
+    .access button{
+      width: 100%;
+      height: 40px;
+      border: none;
+      border-radius: 20px;
+      background-color: hsl(227, 35%, 25%);
+      color: hsl(230, 100%, 99%);
+      cursor: pointer;
+    }
+    .content{
+      line-height: 2rem;
+      font-size: 15px;
+    }
+    .content{
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-between;
+      color: hsl(225, 20%, 60%);
+    }
+    span img{
+      margin-right: 10px;
+    }
+    .price{
+      display: flex;
+      gap:10px;
+      align-items: center;
+    }
+    .discount{
+      background-color: hsl(14, 92%, 95%);
+      padding:2px 9px;
+      border-radius: 20px;
+      font-size: 10px;
+      color: hsl(15, 100%, 70%);
+    }
+    .price span{
+      font-size: 15px;
+      color: hsl(225, 20%, 60%);
+    }
+    hr{
+      width: 100%;
+      border: none;
+      border-bottom: 1px solid gray;
+    }
+    .desk div:nth-child(2){
+      display: none;
+    }
+
+    @media (min-width:1000px) {
+      .body{
+        width: 550px;
+      }
+      .access{
+        width: 100%;
+        flex-direction: row;
+        justify-content: space-around;
+      }
+      .access button{
+        width: 180px;
+      }
+      .pricing{
+        padding:0 50px;
+      }
+      .price{
+        display: none;
+      }
+      .desk{
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+      }
+      .desk div:nth-child(2){
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+    }
+  </style>
+</head>
+<body>
+<main>
+  <div class="header">
+    <h2>Simple, traffic-based pricing</h2>
+    <p>Sign-up for our 30-day trial. <br> NO credit card required.</p>
+  </div>
+  <div class="body">
+    <div class="pricing">
+      <div class="desk"><div><span><span id="pageviews">100</span>K Pageviews</span></div><div><span style="font-size: 20px; font-weight:700; font-size:35px; color:black;">₹</span><h1 id="price-val">999 </h1><span>/month</span></div></div>
+      <input type="range" id="slider" min="0" max="2099" value="990">
+      <div class="price"><span style="font-size: 35px; font-weight:700; color:black;">₹</span><h1 id="price-value">999 </h1><span>/month</span></div>
+      <div class="billing">
+        <span>Monthly Billing</span>
+        <div class="plan-switcher">
+          <span></span>
+        </div>
+        <span>Yearly Billing</span>
+        <span class="discount">-25%</span>
+      </div>
+    </div>
+    <hr>
+    <div class="access">
+      <div class="content">
+        <span><img src="images/icon-check.svg" alt="check"> Unlimited websites</span>
+        <span><img src="images/icon-check.svg" alt="check"> 100% data ownership</span>
+        <span><img src="images/icon-check.svg" alt="check"> Email reports</span>
+      </div>
+<button class="start-btn">Start my trial</button>
+    </div>
+  </div>
+</main>
+
+<script>
+  const slider = document.getElementById('slider');
+  const priceValue = document.getElementById('price-value');
+  const priceVal = document.getElementById('price-val');
+  const pageviews = document.getElementById('pageviews');
+  const planSwitcher = document.querySelector('.plan-switcher');
+
+  priceValue.innerHTML = slider.value;
+  //  Display the default slider value
+  pageviews.innerHTML = slider.value/9;
+
+// Update the current slider value (each time you drag the slider handle)
+slider.oninput = function() {
+  priceValue.innerHTML = this.value;
+  priceVal.innerHTML = this.value;
+  pageviews.innerHTML = (this.value/9).toFixed(0);
+}
+
+planSwitcher.addEventListener('click',()=>{
+  planSwitcher.classList.toggle('plan-toggle');
+  if(planSwitcher.classList.contains('plan-toggle')){
+    slider.value= 1190;
+    priceValue.innerHTML = '1190';
+    priceVal.innerHTML = '1190';
+    slider.setAttribute('max','2990');
+  }
+  else{
+    slider.value= 690;
+    priceValue.innerHTML = '690';
+    priceVal.innerHTML = '690';
+    slider.setAttribute('max','1590');
+  }
+  
+})
+</script>
+
+</body>
+</html>
